@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>賴柏志 | 全端工程師履歷</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #333333;
+      --text-main: #4a4a4a;
+      --text-muted: #757575;
+      --accent: #5a6673;
+      --bg-light: #fdfdfd;
+      --border: #eaeaea;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang TC', 'Noto Sans TC', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-main);
+      background: #f0f2f5;
+      padding: 24px 16px;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+      overflow: hidden;
+    }
+
+    .header {
+      background: #ffffff;
+      padding: 40px 40px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .header-left { display: flex; align-items: center; gap: 24px; }
+    .profile-img {
+      width: 154px; height: 200px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 3px solid #ffffff;
+      border-radius: 4px;
+    }
+    .header-title-group h1 { font-size: 34px; font-weight: 600; letter-spacing: 4px; margin-bottom: 6px; color: var(--ink); }
+    .header-title-group .title {
+      display: inline-block;
+      margin-top: 4px;
+      color: var(--accent);
+      font-size: 15px;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    .header-right { text-align: right; font-size: 12.5px; color: var(--text-muted); line-height: 1.8; font-weight: 400; }
+    .header-right span { display: block; }
+    .header-right a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .header-right a:hover { color: var(--accent); }
+
+    .body { display: grid; grid-template-columns: 1fr 280px; gap: 0; }
+
+    .main  { padding: 36px 40px 36px 40px; border-right: 1px solid var(--border); }
+    .aside { padding: 36px 32px; background: var(--bg-light); }
+
+    section { margin-bottom: 32px; }
+    section:last-child { margin-bottom: 0; }
+
+    .sec-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+
+    .summary p { color: var(--text-main); font-size: 16px; text-align: justify; }
+    .summary strong { color: var(--ink); font-weight: 600; }
+
+    .exp-item { display: flex; gap: 16px; margin-bottom: 22px; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-dot-col { display: flex; flex-direction: column; align-items: center; padding-top: 6px; }
+    .exp-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--bg-light); border: 2px solid var(--accent); flex-shrink: 0;
+    }
+    .exp-line { flex: 1; width: 1px; background: var(--border); margin-top: 4px; }
+    .exp-content { flex: 1; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-bottom: 2px; }
+    .exp-company { font-weight: 600; font-size: 14px; color: var(--ink); }
+    .exp-period { font-size: 11.5px; color: var(--text-muted); font-family: monospace; }
+    .exp-role { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 6px; }
+    .exp-desc { font-size: 12.5px; color: var(--text-main); line-height: 1.6; }
+    .exp-tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .proj-item { margin-bottom: 16px; }
+    .proj-item:last-child { margin-bottom: 0; }
+    .proj-name { font-weight: 600; font-size: 13px; color: var(--ink); }
+    .proj-name span {
+      display: inline-block;
+      font-size: 11.5px; font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 8px;
+    }
+    .proj-name span::before { content: "• "; margin-right: 6px; color: var(--border); }
+    .proj-desc { font-size: 12.5px; color: var(--text-main); margin-top: 4px; line-height: 1.5; }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: #f7f7f7;
+      border: 1px solid #eeeeee;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    .skill-group { margin-bottom: 20px; }
+    .skill-label { font-size: 11.5px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .aside-badge {
+      display: block;
+      padding: 0 0 12px 0;
+      margin-bottom: 12px;
+      font-size: 12.5px;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border);
+    }
+    .aside-badge:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .aside-badge strong { color: var(--ink); font-weight: 600; }
+
+    .highlight { font-weight: 600; color: var(--ink); }
+
+    ul.learning-list { list-style: none; padding: 0; color: var(--text-main); font-size: 12.5px; line-height: 1.8; }
+    ul.learning-list li { position: relative; padding-left: 14px; }
+    ul.learning-list li::before {
+      content: ""; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; background: var(--text-muted); border-radius: 50%;
+    }
+
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; border: none; }
+      /* 換頁控制 */
+      .exp-item, .proj-item, .skill-group, .aside-badge, section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .sec-title { page-break-after: avoid; break-after: avoid; }
+      .header { border-bottom: 1px solid #ccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tag { border-color: #ddd; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <img src="images/profile.jpg" alt="賴柏志照片" class="profile-img">
+      <div class="header-title-group">
+        <h1>賴 柏 志</h1>
+        <span class="title">全端工程師</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span>📱 hide</span>
+      <span>✉ <a href="mailto:cssource710160@gmail.com">cssource710160@gmail.com</a></span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="main">
+
+      <section class="summary">
+        <div class="sec-title">個人簡介</div>
+        <p>
+          具備 <strong>9 年以上</strong> Web 系統開發與維護經驗，主要服務農業部農糧署、逢甲大學、聯合大學等多個大型政府與校務資訊系統。
+          熟悉 ASP.NET WebForms、Sybase / MSSQL 資料庫、API 串接、報表製作，並具備
+          <strong>5 年跨縣市教育訓練</strong>授課實績，擅長溝通協作與技術文件說明。
+        </p>
+      </section>
+
+      <section>
+        <div class="sec-title">工作經歷</div>
+
+        <div class="exp-item">
+          <div class="exp-dot-col">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-header">
+              <span class="exp-company">逢甲大學資訊處</span>
+              <span class="exp-period">2017 — 2026 · 約 9 年</span>
+            </div>
+            <div class="exp-role">程式設計師</div>
+            <div class="exp-desc">受政府機關委託，曾負責 10 套以上大型資訊系統設計、開發、維運與教育訓練說明。</div>
+            <div class="exp-tags">
+              <span class="tag tag-tech">ASP.NET WebForms</span>
+              <span class="tag tag-db">Sybase</span>
+              <span class="tag tag-db">MSSQL</span>
+              <span class="tag tag-tech">jQuery</span>
+              <span class="tag tag-tool">API</span>
+              <span class="tag tag-tool">教育訓練</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-dot-col">
+            <div class="exp-dot"></div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-header">
+              <span class="exp-company">海軍陸戰隊指揮部</span>
+              <span class="exp-period">2016 · 1 年</span>
+            </div>
+            <div class="exp-role">系統開發</div>
+            <div class="exp-desc">軍用管理服務系統，主要供多個營區內部使用。</div>
+            <div class="exp-tags">
+              <span class="tag tag-tech">PHP</span>
+              <span class="tag tag-db">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-title">專案經驗 — 農糧署 / 校務系統</div>
+
+        <div class="proj-item">
+          <div class="proj-name">糧政跨區即時申辦服務作業平台<span>7 年 · 農糧署</span></div>
+          <div class="proj-desc">補助申請、審核流程系統化、報表開發＆整合外部 API 增進內部系統驗證機制，以及教育訓練說明。</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">農機補助管理作業平台<span>4 年 · 農糧署</span></div>
+          <div class="proj-desc">補助申請、審核流程系統化、報表開發＆整合外部 API 增進內部系統驗證機制，以及教育訓練說明。</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">國產雜糧／優質蔬菜集團產區系統<span>4 年 · 農糧署</span></div>
+          <div class="proj-desc">補助申請、審核流程系統化、報表開發＆整合外部 API 增進內部系統驗證機制，以及教育訓練說明。</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">糧食體系（糧商管理／糧價／大小包裝系統）<span>4年 · 農糧署</span></div>
+          <div class="proj-desc">內部管理系統、對外公開資料查詢服務 API，以及教育訓練說明。</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">第二代公糧儲撥管理整合系統<span>4年 · 農糧署</span></div>
+          <div class="proj-desc">公糧內部管理系統、對外公開資料查詢服務 API。</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-name">聯合大學校務系統<span>2.5 年</span></div>
+          <div class="proj-desc">成績、選課、報表開發與維護。</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-title">自主學習</div>
+        <ul class="learning-list">
+          <li>ASP.NET Core MVC 開發實戰</li>
+          <li>C# 開發實戰：非同步程式開發技巧</li>
+          <li>ChatGPT 進階語音互動：打造個人化的英語口說教練</li>
+          <li>ChatGPT 錦囊妙計：掌握九大應用場景的創意用法</li>
+          <li>ASP.NET Core 8 開發實戰：從入門到進階</li>
+          <li>NotebookLM 錦囊妙計：掌握九大應用場景的創意用法</li>
+          <li>實戰 E2E 測試：使用 Playwright 測試框架</li>
+          <li>規格驅動開發實戰：AI 時代的軟體開發新典範</li>
+          <li>Nano Banana Pro 錦囊妙計：資訊圖表生成的工程化方法</li>
+          <li>使用 GitHub Copilot SDK 打造可自動開發的 AI 代理人</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- Aside -->
+    <div class="aside">
+
+      <section>
+        <div class="sec-title">重點摘要</div>
+        <span class="aside-badge highlight">9 年以上 Web 開發經驗</span>
+        <span class="aside-badge">10 套以上大型政府 / 校務系統</span>
+        <span class="aside-badge">5 年教育訓練授課（到全台各縣市）</span>
+        <span class="aside-badge">API 整合 × 多種外部機關資料對接</span>
+      </section>
+
+      <section>
+        <div class="sec-title">技術能力</div>
+
+        <div class="skill-group">
+          <div class="skill-label">前端開發</div>
+          <div class="skill-tags">
+            <span class="tag tag-tech">ASP.NET WebForms</span>
+            <span class="tag tag-tech">HTML / CSS</span>
+            <span class="tag tag-tech">jQuery</span>
+            <span class="tag tag-tech">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">後端開發</div>
+          <div class="skill-tags">
+            <span class="tag tag-tech">ASP.NET WebForms</span>
+            <span class="tag tag-tech">C#</span>
+            <span class="tag tag-tech">PHP</span>
+            <span class="tag tag-tool">API</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">資料庫</div>
+          <div class="skill-tags">
+            <span class="tag tag-db">Sybase</span>
+            <span class="tag tag-db">MSSQL</span>
+            <span class="tag tag-db">MySQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">核心優勢</div>
+          <div class="skill-tags">
+            <span class="tag tag-tool">系統分析設計</span>
+            <span class="tag tag-tool">需求訪談</span>
+            <span class="tag tag-tool">教育訓練</span>
+            <span class="tag tag-tool">文件撰寫</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-title">學歷背景</div>
+        <span class="aside-badge">
+          <strong>逢甲大學</strong><br>
+          資訊工程系
+        </span>
+      </section>
+
+    </div><!-- /aside -->
+
+  </div><!-- /body -->
+</div><!-- /page -->
+</body>
+</html>
